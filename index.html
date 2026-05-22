@@ -1,85 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <style>
         table, th, td {
           border: 1px solid black;
           border-collapse: collapse;
+          padding: 8px;
+          text-align: center;
+        }
+
+        table {
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input {
+            margin-bottom: 10px;
         }
     </style>
+
     <title>NossaReceita</title>
     <meta charset="utf-8" />
 </head>
+
 <body>
+
     <h1>NossaReceita</h1>
-    <h2>Bem-vindo à NossaReceita, seu portal de cursos,
-        dicas nutricionais e receitas para uma vida 
-        saudável
+
+    <h2>
+        Bem-vindo à NossaReceita, seu portal de cursos,
+        dicas nutricionais e receitas para uma vida saudável
     </h2>
 
-    
-    <p>Entendemos que a jornada por um estilo de vida mais 
+    <p>
+        Entendemos que a jornada por um estilo de vida mais 
         equilibrado começa com informação de qualidade, 
         por isso, reunimos em um só lugar tudo o que você 
         precisa: desde guias práticos sobre nutrição até o 
         passo a passo detalhado de receitas que unem sabor e 
-        saúde em cada detalhe.</p>
+        saúde em cada detalhe.
+    </p>
 
-    <table style="width:30% ;">
-            <tr>
-              <th colspan="2">Name</th>
-              <th>Age</th>
-            </tr>
-            <tr>
-                <td>sla</td>
-                <td>sla</td>
-                <td>sla</td>
-            </tr>
-            <tr>
-                <td>sla</td>
-                <td>sla</td>
-                <td>sla</td>
-            </tr>
-            <tr>
-                <td>sla</td>
-                <td>sla</td>
-                <td>sla</td>
-            </tr>
-            <tr>
-                <td>sla</td>
-                <td>sla</td>
-                <td>sla</td>
-            </tr>
-            <tr>
-                <td>sla</td>
-                <td>sla</td>
-                <td>sla</td>
-            </tr>
+    <!-- tabela 1 -->
+    <table style="width:50% ;">
+
+        <tr>
+            <th colspan="3">Cursos Disponíveis</th>
+        </tr>
+
+        <tr>
+            <th>Curso</th>
+            <th>Duração</th>
+            <th>Nível</th>
+        </tr>
+
+        <tr>
+            <td>Nutrição Básica</td>
+            <td>2 meses</td>
+            <td>Iniciante</td>
+        </tr>
+
+        <tr>
+            <td>Receitas Fitness</td>
+            <td>1 mês</td>
+            <td>Intermediário</td>
+        </tr>
+
+        <tr>
+            <td>Alimentação Saudável</td>
+            <td>3 meses</td>
+            <td>Avançado</td>
+        </tr>
+
     </table>
-<br />
-    <table style="width:30% ;">
+
+    <!-- tabela 2 -->
+    <table style="width:50% ;">
+
         <tr>
-            <td rowspan="3">Abril</td>
-            <td>Sim</td>
-            <td>Sim</td>
+            <th rowspan="2">Categoria</th>
+            <th colspan="2">Informações</th>
         </tr>
+
         <tr>
-            <td>234523</td>
-            <td>2342</td>
+            <th>Receita</th>
+            <th>Calorias</th>
         </tr>
+
         <tr>
-            <td>2343</td>
-            <td>23432</td>
+            <td rowspan="2">Café da manhã</td>
+            <td>Vitamina de Banana</td>
+            <td>150 kcal</td>
         </tr>
+
         <tr>
-            <td>23423</td>
-            <td>432432</td>
-            <td>23432</td>
+            <td>Omelete Fit</td>
+            <td>220 kcal</td>
         </tr>
+
         <tr>
-            <td>23432</td>
-            <td>23432</td>
+            <td rowspan="2">Almoço</td>
+            <td>Frango Grelhado</td>
+            <td>320 kcal</td>
         </tr>
+
+        <tr>
+            <td>Salada Natural</td>
+            <td>180 kcal</td>
+        </tr>
+
     </table>
+
+    <!-- formulário -->
+    <h2>Cadastre-se</h2>
+
+    <form>
+
+        <label>Nome:</label><br />
+        <input type="text" name="nome"><br />
+
+        <label>Email:</label><br />
+        <input type="email" name="email"><br />
+
+        <label>Receita favorita:</label><br />
+        <input type="text" name="receita"><br />
+
+        <input type="submit" value="Enviar">
+
+    </form>
+
 </body>
 </html>
