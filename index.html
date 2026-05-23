@@ -224,6 +224,26 @@
 
         }
 
+        
+        .goku-link{
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 999;
+        }
+
+
+        .goku-link img{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        /* efeito quando passa o mouse */
+        .goku-link img:hover{
+            transform: scale(1.1);
+        }
     </style>
 
 </head>
@@ -232,7 +252,7 @@
 
     <header>
 
-        <h1>AnimeCollection</h1>
+        <h1>Catálogo</h1>
 
         <p>
             Um catálogo pessoal com alguns dos meus animes favoritos,
@@ -592,7 +612,16 @@
         </section>
 
     </main>
+    
+    <a href="https://www.youtube.com/shorts/ITe_XnWErss"
+    target="_blank"
+    class="goku-link">
 
+        <img 
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV30g9uOeCjvZVj8LzBh-aJVwJk9Kc8o0GUQ&s"
+        alt="goku">
+
+    </a>
 </body>
 
 </html>
