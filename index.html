@@ -1,136 +1,599 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Catálogo de Animes</title>
+
     <style>
-        table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
-          padding: 8px;
-          text-align: center;
+
+        /* penha, tirei as margens padrao pq tava deixando uns espacos feios */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        table {
-            margin-bottom: 20px;
+        body{
+            background-color: #0f0f14;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
         }
 
-        form {
-            margin-top: 20px;
+        /* penha, esse header ficou tipo banner principal do site */
+        header{
+            background: linear-gradient(to right, #111827, #1f2937);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 4px solid #facc15;
         }
 
-        input {
+        header h1{
+            font-size: 45px;
             margin-bottom: 10px;
+            color: #facc15;
         }
+
+        header p{
+            width: 80%;
+            margin: auto;
+            color: #d1d5db;
+        }
+
+        nav{
+            background-color: #18181b;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover{
+            color: #facc15;
+        }
+
+        main{
+            width: 90%;
+            margin: auto;
+            padding: 30px 0;
+        }
+
+        section{
+            margin-bottom: 60px;
+        }
+
+        section h2{
+            margin-bottom: 20px;
+            color: #facc15;
+            border-left: 5px solid #facc15;
+            padding-left: 10px;
+        }
+
+        /* penha, usei grid pq fica mais organizado os cards */
+        .anime-container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .anime-card{
+            background-color: #1a1a22;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 2px solid #27272a;
+        }
+
+        .anime-card:hover{
+            transform: scale(1.03);
+        }
+
+        /* penha, usei object-fit cover pra imagem nao ficar esticada feiona */
+        .anime-card img{
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .anime-info{
+            padding: 18px;
+        }
+
+        .anime-info h3{
+            margin-bottom: 10px;
+            color: #facc15;
+        }
+
+        .anime-info p{
+            color: #d4d4d8;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .anime-info a{
+            display: inline-block;
+            background-color: #facc15;
+            color: black;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .anime-info a:hover{
+            background-color: #fde047;
+        }
+
+        ul{
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #18181b;
+        }
+
+        th, td{
+            border: 1px solid #3f3f46;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th{
+            background-color: #27272a;
+            color: #facc15;
+        }
+
+        tr:hover{
+            background-color: #23232d;
+        }
+
+        form{
+            background-color: #18181b;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        label{
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        input, select, textarea{
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background-color: #27272a;
+            color: white;
+        }
+
+        textarea{
+            resize: vertical;
+        }
+
+        button{
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background-color: #facc15;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #fde047;
+        }
+
+        footer{
+            text-align: center;
+            padding: 25px;
+            background-color: #111827;
+            margin-top: 50px;
+            border-top: 3px solid #facc15;
+        }
+
+        /* penha, fiz responsivo pra no celular nao quebrar tudo */
+        @media(max-width:700px){
+
+            header h1{
+                font-size: 32px;
+            }
+
+            .anime-card img{
+                height: 300px;
+            }
+
+        }
+        
+        /* penha, algumas partes do css eu pedi ajuda pra ia pq eu ainda nao sei mexer muito bem
+        principalmente na parte de redimensionar imagem, organizar os cards e deixar responsivo no celular
+        eu entendi a ideia do codigo, mas algumas propriedades tipo
+        object-fit, grid, media e alguns tamanhos eu ainda to aprendendo a usar direito
+        mesmo assim eu revisei o codigo e fui ajustando as coisas pra entender melhor como funciona, eu pedi mais ajuda no css para deixar o site bonito, ele sem css ja estava pronto */
+
     </style>
 
-    <title>NossaReceita</title>
-    <meta charset="utf-8" />
 </head>
 
 <body>
 
-    <h1>NossaReceita</h1>
+    <header>
 
-    <h2>
-        Bem-vindo à NossaReceita, seu portal de cursos,
-        dicas nutricionais e receitas para uma vida saudável
-    </h2>
+        <h1>AnimeCollection</h1>
 
-    <p>
-        Entendemos que a jornada por um estilo de vida mais 
-        equilibrado começa com informação de qualidade, 
-        por isso, reunimos em um só lugar tudo o que você 
-        precisa: desde guias práticos sobre nutrição até o 
-        passo a passo detalhado de receitas que unem sabor e 
-        saúde em cada detalhe.
-    </p>
+        <p>
+            Um catálogo pessoal com alguns dos meus animes favoritos,
+            organizado como se fosse um mini site real de anime.
+        </p>
 
-    <!-- tabela 1 -->
-    <table style="width:50% ;">
+    </header>
 
-        <tr>
-            <th colspan="3">Cursos Disponíveis</th>
-        </tr>
+    <nav>
 
-        <tr>
-            <th>Curso</th>
-            <th>Duração</th>
-            <th>Nível</th>
-        </tr>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#tabela">Tabela</a>
+        <a href="#lista">Top Arcos</a>
+        <a href="#formulario">Formulário</a>
 
-        <tr>
-            <td>Nutrição Básica</td>
-            <td>2 meses</td>
-            <td>Iniciante</td>
-        </tr>
+    </nav>
 
-        <tr>
-            <td>Receitas Fitness</td>
-            <td>1 mês</td>
-            <td>Intermediário</td>
-        </tr>
+    <main>
 
-        <tr>
-            <td>Alimentação Saudável</td>
-            <td>3 meses</td>
-            <td>Avançado</td>
-        </tr>
+        <!-- seção dos cards -->
+        <section id="catalogo">
 
-    </table>
+            <h2>Catálogo de Animes</h2>
 
-    <!-- tabela 2 -->
-    <table style="width:50% ;">
+            <div class="anime-container">
 
-        <tr>
-            <th rowspan="2">Categoria</th>
-            <th colspan="2">Informações</th>
-        </tr>
+                <!-- dragon ball classico -->
+                <article class="anime-card">
 
-        <tr>
-            <th>Receita</th>
-            <th>Calorias</th>
-        </tr>
+                    <img src="https://br.web.img2.acsta.net/pictures/22/11/22/14/02/3642167.jpg">
 
-        <tr>
-            <td rowspan="2">Café da manhã</td>
-            <td>Vitamina de Banana</td>
-            <td>150 kcal</td>
-        </tr>
+                    <div class="anime-info">
 
-        <tr>
-            <td>Omelete Fit</td>
-            <td>220 kcal</td>
-        </tr>
+                        <h3>Dragon Ball Clássico</h3>
 
-        <tr>
-            <td rowspan="2">Almoço</td>
-            <td>Frango Grelhado</td>
-            <td>320 kcal</td>
-        </tr>
+                        <p>
+                            O começo da jornada de Goku quando ainda era criança.
+                            Mistura aventura, humor e artes marciais de um jeito muito bom.
+                        </p>
 
-        <tr>
-            <td>Salada Natural</td>
-            <td>180 kcal</td>
-        </tr>
+                        <a href="https://www.crunchyroll.com/pt-br/series/G8DHV7W21/dragon-ball" target="_blank">
+                            Assistir
+                        </a>
 
-    </table>
+                    </div>
 
-    <!-- formulário -->
-    <h2>Cadastre-se</h2>
+                </article>
 
-    <form>
+                <!-- dragon ball z -->
+                <article class="anime-card">
 
-        <label>Nome:</label><br />
-        <input type="text" name="nome"><br />
+                    <img src="https://m.media-amazon.com/images/M/MV5BNmFiM2FkYTYtY2FiOS00ZWJkLTkyOTgtNmFmODI4NjcwNDgzXkEyXkFqcGc@._V1_.jpg">
 
-        <label>Email:</label><br />
-        <input type="email" name="email"><br />
+                    <div class="anime-info">
 
-        <label>Receita favorita:</label><br />
-        <input type="text" name="receita"><br />
+                        <h3>Dragon Ball Z</h3>
 
-        <input type="submit" value="Enviar">
+                        <p>
+                            A fase mais famosa de Dragon Ball. Tem lutas lendárias,
+                            transformações e vilões absurdos.
+                        </p>
 
-    </form>
+                        <a href="https://www.crunchyroll.com/pt-br/series/G9VHN9PPW/dragon-ball-z" target="_blank">
+                            Assistir
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- dragon ball super -->
+                <article class="anime-card">
+
+                    <img src="https://upload.wikimedia.org/wikipedia/pt/7/74/Dragon_Ball_Super_Key_visual.jpg">
+
+                    <div class="anime-info">
+
+                        <h3>Dragon Ball Super</h3>
+
+                        <p>
+                            Continua a história depois do Z e aumenta ainda mais o nível
+                            das batalhas com universos diferentes.
+                        </p>
+
+                        <a href="https://www.crunchyroll.com/pt-br/series/GR19V7816/dragon-ball-super" target="_blank">
+                            Assistir
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- re zero -->
+                <article class="anime-card">
+
+                    <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/d/dd/Re_Zero_poster.jpg/250px-Re_Zero_poster.jpg">
+
+                    <div class="anime-info">
+
+                        <h3>Re:Zero</h3>
+
+                        <p>
+                            Um isekai diferente onde Subaru revive toda vez que morre.
+                            O anime trabalha muito sofrimento psicológico.
+                        </p>
+
+                        <a href="https://www.crunchyroll.com/pt-br/series/GRGG9798R/rezero--starting-life-in-another-world-" target="_blank">
+                            Assistir
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- fairy tail -->
+                <article class="anime-card">
+
+                    <img src="https://m.media-amazon.com/images/M/MV5BODlhNTQ3ZDgtMDJlMC00YzdmLWE3ZTMtOWNmMTZkN2I2MzI5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg">
+
+                    <div class="anime-info">
+
+                        <h3>Fairy Tail</h3>
+
+                        <p>
+                            Anime focado em amizade, magia e batalhas.
+                            A guilda Fairy Tail é uma das partes mais marcantes.
+                        </p>
+
+                        <a href="https://www.crunchyroll.com/pt-br/series/G6DQDD3WR/fairy-tail" target="_blank">
+                            Assistir
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- one piece -->
+                <article class="anime-card">
+
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvtctxEKPODXyQW7LjXqqPsBhj7ORiYHsIfg&s">
+
+                    <div class="anime-info">
+
+                        <h3>One Piece</h3>
+
+                        <p>
+                            A jornada de Luffy para virar o Rei dos Piratas.
+                            Um dos maiores e mais importantes animes da história.
+                        </p>
+
+                        <a href="https://www.crunchyroll.com/pt-br/series/GRMG8ZQZR/one-piece" target="_blank">
+                            Assistir
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- bleach -->
+                <article class="anime-card">
+
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/72/Bleachanime.png/250px-Bleachanime.png">
+
+                    <div class="anime-info">
+
+                        <h3>Bleach</h3>
+
+                        <p>
+                            Ichigo ganha poderes de shinigami e começa a enfrentar
+                            hollows e inimigos cada vez mais fortes.
+                        </p>
+
+                        <a href="https://www.disneyplus.com/pt-br/series/bleach/6g48QKlgQdWK" target="_blank">
+                            Assistir
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- death note -->
+                <article class="anime-card">
+
+                    <img src="https://m.media-amazon.com/images/M/MV5BYTgyZDhmMTEtZDFhNi00MTc4LTg3NjUtYWJlNGE5Mzk2NzMxXkEyXkFqcGc@._V1_.jpg">
+
+                    <div class="anime-info">
+
+                        <h3>Death Note</h3>
+
+                        <p>
+                            Um anime psicológico onde Light encontra um caderno
+                            capaz de matar qualquer pessoa.
+                        </p>
+
+                        <a href="https://www.netflix.com/br/title/70204970" target="_blank">
+                            Assistir
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- tabela -->
+        <section id="tabela">
+
+            <h2>Tabela de Informações</h2>
+
+            <table>
+
+                <tr>
+                    <th rowspan="2">Anime</th>
+                    <th colspan="2">Produção</th>
+                    <th colspan="2">Informações</th>
+                    <th rowspan="2">Melhor Arco</th>
+                    <th rowspan="2">Status</th>
+                </tr>
+
+                <tr>
+                    <th>Autor</th>
+                    <th>Temporadas</th>
+                    <th>Episódios</th>
+                    <th>Gênero</th>
+                </tr>
+
+                <tr>
+                    <td>Dragon Ball</td>
+                    <td>Akira Toriyama</td>
+                    <td>3 fases</td>
+                    <td>600+</td>
+                    <td>Ação / Luta</td>
+                    <td>Torneio do Poder</td>
+                    <td>Em andamento</td>
+                </tr>
+
+                <tr>
+                    <td>Fullmetal Alchemist</td>
+                    <td>Hiromu Arakawa</td>
+                    <td>1</td>
+                    <td>64</td>
+                    <td>Aventura</td>
+                    <td>Promised Day</td>
+                    <td>Finalizado</td>
+                </tr>
+
+                <tr>
+                    <td>Re:Zero</td>
+                    <td>Tappei Nagatsuki</td>
+                    <td>2</td>
+                    <td>50+</td>
+                    <td>Isekai / Drama</td>
+                    <td>Santuário</td>
+                    <td>Em andamento</td>
+                </tr>
+
+                <tr>
+                    <td>Fairy Tail</td>
+                    <td>Hiro Mashima</td>
+                    <td>3</td>
+                    <td>300+</td>
+                    <td>Magia / Ação</td>
+                    <td>Grand Magic Games</td>
+                    <td>Finalizado</td>
+                </tr>
+
+                <tr>
+                    <td>One Piece</td>
+                    <td>Eiichiro Oda</td>
+                    <td>20+</td>
+                    <td>1000+</td>
+                    <td>Aventura</td>
+                    <td>Marineford</td>
+                    <td>Em andamento</td>
+                </tr>
+
+                <tr>
+                    <td>Bleach</td>
+                    <td>Tite Kubo</td>
+                    <td>2 fases</td>
+                    <td>300+</td>
+                    <td>Shounen</td>
+                    <td>Soul Society</td>
+                    <td>Finalizado</td>
+                </tr>
+
+                <tr>
+                    <td>Death Note</td>
+                    <td>Tsugumi Ohba</td>
+                    <td>1</td>
+                    <td>37</td>
+                    <td>Suspense</td>
+                    <td>L vs Kira</td>
+                    <td>Finalizado</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+        <!-- lista -->
+        <section id="lista">
+
+            <h2>Arcos que eu mais gosto</h2>
+
+            <ul>
+                <li>Dragon Ball Super - Torneio do Poder</li>
+                <li>One Piece - Marineford</li>
+                <li>Bleach - Soul Society</li>
+                <li>Re:Zero - Santuário</li>
+                <li>Fairy Tail - Grand Magic Games</li>
+                <li>Death Note - L vs Kira</li>
+            </ul>
+
+        </section>
+
+        <!-- formulario -->
+        <section id="formulario">
+
+            <h2>Me Recomende um Anime</h2>
+
+            <form>
+
+                <label>Seu nome</label>
+                <input type="text" placeholder="Digite seu nome">
+
+                <label>Seu gênero favorito</label>
+
+                <select>
+
+                    <option>Ação</option>
+                    <option>Aventura</option>
+                    <option>Drama</option>
+                    <option>Shounen</option>
+                    <option>Isekai</option>
+                    <option>Suspense</option>
+
+                </select>
+
+                <label>Nota para meu catálogo</label>
+                <input type="number" min="0" max="10">
+
+                <label>Anime recomendado</label>
+                <input type="text" placeholder="Qual anime eu deveria assistir?">
+
+                <label>Comentário</label>
+
+                <textarea rows="6"
+                    placeholder="fala ai pq tu acha que eu iria gostar desse anime"></textarea>
+
+                <button type="submit">Enviar recomendação</button>
+
+            </form>
+
+        </section>
+
+    </main>
 
 </body>
+
 </html>
