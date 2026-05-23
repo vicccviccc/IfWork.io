@@ -8,8 +8,13 @@
     <title>Catálogo de Animes</title>
 
     <style>
-
-        /* penha, tirei as margens padrao pq tava deixando uns espacos feios */
+        /* penha algumas partes do css eu pedi ajuda pra ia pq eu ainda nao sei mexer muito bem
+        principalmente na parte de redimensionar imagem, organizar os cards e deixar responsivo no celular
+        eu entendi a ideia do codigo, mas algumas propriedades tipo
+        object-fit, grid, media e alguns tamanhos eu ainda to aprendendo a usar direito
+        mesmo assim eu revisei o codigo e fui ajustando as coisas pra entender melhor como funciona, eu pedi mais ajuda no css para deixar o site bonito, ele sem css ja estava pronto */
+        /* eu ja estava fazendo esse projeto quando lançou a atividade e quase nao consegui trocar esse pelo o da receita que eu comecei, mas deu certo */
+        /* tirei as margens padrao pq tava deixando uns espacos feios */
         *{
             margin: 0;
             padding: 0;
@@ -23,7 +28,7 @@
             line-height: 1.6;
         }
 
-        /* penha, esse header ficou tipo banner principal do site */
+        /* esse header ficou tipo banner principal do site */
         header{
             background: linear-gradient(to right, #111827, #1f2937);
             padding: 40px;
@@ -77,7 +82,7 @@
             padding-left: 10px;
         }
 
-        /* penha, usei grid pq fica mais organizado os cards */
+        /* penha usei grid pq fica mais organizado os cards */
         .anime-container{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -96,7 +101,7 @@
             transform: scale(1.03);
         }
 
-        /* penha, usei object-fit cover pra imagem nao ficar esticada feiona */
+        /* usei object-fit cover pra imagem nao ficar esticada feiona */
         .anime-card img{
             width: 100%;
             height: 350px;
@@ -218,12 +223,6 @@
             }
 
         }
-        
-        /* penha, algumas partes do css eu pedi ajuda pra ia pq eu ainda nao sei mexer muito bem
-        principalmente na parte de redimensionar imagem, organizar os cards e deixar responsivo no celular
-        eu entendi a ideia do codigo, mas algumas propriedades tipo
-        object-fit, grid, media e alguns tamanhos eu ainda to aprendendo a usar direito
-        mesmo assim eu revisei o codigo e fui ajustando as coisas pra entender melhor como funciona, eu pedi mais ajuda no css para deixar o site bonito, ele sem css ja estava pronto */
 
     </style>
 
