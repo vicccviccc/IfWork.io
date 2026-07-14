@@ -26,6 +26,8 @@
             color: white;
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
 
         /* esse header ficou tipo banner principal do site */
@@ -65,9 +67,12 @@
             color: #facc15;
         }
 
+        /* penha, limitei a largura maxima do site pq em monitor muito grande
+        ele ficava muito esticado, assim continua centralizado mas fica mais bonito */
         main{
             width: 90%;
-            margin: auto;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 30px 0;
         }
 
@@ -164,10 +169,14 @@
             background-color: #23232d;
         }
 
+        /* deixei o formulario com um tamanho maximo
+        pra nao ocupar a tela toda em monitor grande */
         form{
             background-color: #18181b;
             padding: 25px;
             border-radius: 10px;
+            max-width: 500px;
+            margin: 20px auto;
         }
 
         label{
@@ -175,7 +184,8 @@
             margin-top: 15px;
             margin-bottom: 5px;
         }
-
+        /* deixei todos os campos ocupando a largura do formulario
+        assim fica mais organizado e padronizado */
         input, select, textarea{
             width: 100%;
             padding: 12px;
