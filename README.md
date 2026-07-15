@@ -1,2 +1,2 @@
 # Atividades
-esse repositório contém a nova atividade da disciplina.
+esse repositório contém meu codigo atualizado.
