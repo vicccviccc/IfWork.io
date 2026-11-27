@@ -595,7 +595,8 @@
 
             <h2>Me Recomende um Anime</h2>
 
-            <form>
+            <form id="form-recomendacao">
+                <p>Formulário demonstrativo: as recomendações não são enviadas a um servidor.</p>
 
                 <label for="nome">Seu nome</label>
                 <input id="nome" type="text" required autocomplete="name" placeholder="Digite seu nome">
@@ -624,7 +625,8 @@
                 <textarea id="comentario" rows="6"
                     placeholder="fala ai pq tu acha que eu iria gostar desse anime"></textarea>
 
-                <button type="submit">Enviar recomendação</button>
+                <button type="submit">Testar recomendação</button>
+                <p id="status-recomendacao" role="status"></p>
 
             </form>
 
@@ -641,6 +643,13 @@
         alt="goku">
 
     </a>
+    <script>
+        document.getElementById('form-recomendacao').addEventListener('submit', function(evento) {
+            evento.preventDefault();
+            document.getElementById('status-recomendacao').textContent =
+                'Campos validados! Esta demonstração não envia seus dados.';
+        });
+    </script>
 </body>
 
 </html>
