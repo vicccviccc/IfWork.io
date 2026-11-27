@@ -587,12 +587,12 @@
 
             <form>
 
-                <label>Seu nome</label>
-                <input type="text" placeholder="Digite seu nome">
+                <label for="nome">Seu nome</label>
+                <input id="nome" type="text" placeholder="Digite seu nome">
 
-                <label>Seu gênero favorito</label>
+                <label for="genero">Seu gênero favorito</label>
 
-                <select>
+                <select id="genero">
 
                     <option>Ação</option>
                     <option>Aventura</option>
@@ -603,15 +603,15 @@
 
                 </select>
 
-                <label>Nota para meu catálogo</label>
-                <input type="number" min="0" max="10">
+                <label for="nota">Nota para meu catálogo</label>
+                <input id="nota" type="number" min="0" max="10">
 
-                <label>Anime recomendado</label>
-                <input type="text" placeholder="Qual anime eu deveria assistir?">
+                <label for="anime">Anime recomendado</label>
+                <input id="anime" type="text" placeholder="Qual anime eu deveria assistir?">
 
-                <label>Comentário</label>
+                <label for="comentario">Comentário</label>
 
-                <textarea rows="6"
+                <textarea id="comentario" rows="6"
                     placeholder="fala ai pq tu acha que eu iria gostar desse anime"></textarea>
 
                 <button type="submit">Enviar recomendação</button>
